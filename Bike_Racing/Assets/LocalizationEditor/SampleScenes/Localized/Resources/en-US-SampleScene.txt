@@ -1,0 +1,1 @@
+{"SampleTitle":"Localization Editor Sample Scene","LangLabel":"Select Language","GUITextKey":"This scene shows how to set each Unity type\nLE supports. This is a GUIText.","TextMeshKey":"This is a TextMesh Component.","FromCodeKey":"This is from a script.","ar":"\ufe94\ufef4\ufe91\ufeae\ufecc\ufedf\ufe8d","he":"\u05ea\u05d9\u05e8\u05d1\u05e2","ur":"\ufeed\ufea9\ufead\ufe8d"}

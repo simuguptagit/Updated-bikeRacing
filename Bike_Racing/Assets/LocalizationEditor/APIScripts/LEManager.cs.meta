@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: bb51add24b6ed4278a5b84492e6858df
+labels:
+- localization
+- localize
+- translations
+- languages
+- international
+- Arabic
+- Hebrew
+- Urdu
+- Bidirectional
+- Bidi
+- Persian
+- Pashto
+- RTL
+- RightToLeft
+- internationalization
+- i18n
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

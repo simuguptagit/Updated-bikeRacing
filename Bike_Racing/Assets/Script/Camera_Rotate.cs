@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera_Rotate : MonoBehaviour {
-	float arroeMouseSpeed = .5f;
+	float arroeMouseSpeed = .8f;
+	public float z;
 	public static bool Scroll_stop;
 	// Use this for initialization
 	void Start () {
@@ -15,14 +16,7 @@ public class Camera_Rotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	//	if (Input.GetMouseButtonDown (0))
-	//	//	touchIson = true;
-	//	if(touchIson)
-	//	MouseMovement ();
-	
-	//	if (Input.GetMouseButtonUp (0))
-	//		touchIson = false;
-
+		
 		if (Input.touches.Length <= 0) {
 		} else {
 			for (int i = 0; i < Input.touchCount; i++) {
@@ -47,10 +41,10 @@ public class Camera_Rotate : MonoBehaviour {
 	void moveCamera(float horizontal, float verticle , float movespeed){
 		mouseX = horizontal;
 		mouseY = verticle;
-		rotY += mouseX * movespeed;
+		rotY -= mouseX * movespeed;
 		//rotX += mouseY * movespeed;
 
-		localRotation = Quaternion.Euler (rotX , rotY,0f);
+		localRotation = Quaternion.Euler (rotX , rotY,z);
 		transform.rotation = localRotation;
 	}
 }
