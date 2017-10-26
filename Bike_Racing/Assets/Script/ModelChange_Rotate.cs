@@ -80,6 +80,8 @@ public class ModelChange_Rotate : MonoBehaviour {
 			grip = 20000;
 			model_bike = "Triumph RACING";
 		}
+		Debug.Log ("checkhh..."+p+"  "+power+"   "+powerpoint);
+
 		powertext.text = p.ToString();
 		weighttext.text = w.ToString();
 		griptext.text = g.ToString();
@@ -90,7 +92,6 @@ public class ModelChange_Rotate : MonoBehaviour {
 		loadweight =(float) weight /(float) weghtpoint;
 		loadgrip =(float) grip /(float) grippoint;
 		loading = true;
-		//Debug.Log ("checkhh..."+(float)power / (float)powerpoint+"  "+power+"   "+powerpoint);
 	}
 
 	// Update is called once per frame

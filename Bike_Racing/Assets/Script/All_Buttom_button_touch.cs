@@ -9,7 +9,7 @@ public class All_Buttom_button_touch : MonoBehaviour {
 	public GameObject Back;
 	public GameObject Select;
 	public GameObject Buttom_panel;
-
+	public GameObject Level_Selection_Pannel;
 	public GameObject Levels;
 
 	public GameObject Lang_Panel;
@@ -303,13 +303,10 @@ public class All_Buttom_button_touch : MonoBehaviour {
 	public void cross_Lang(){
 		Lang_Panel.SetActive (false);
 	}
-	public void Play(){
-		//Forword.SetActive (true);
-		//Back.SetActive (true);
-		//Select.SetActive (true);
+	public void Race(){
 		Bikelistselected.SetActive (false);
 		raceselected.SetActive(true);
-		SceneManager.LoadScene (1); 
+		Level_Selection_Pannel.SetActive (true);
 	}
 
 	public void select(){
@@ -443,5 +440,29 @@ public class All_Buttom_button_touch : MonoBehaviour {
 			PlayerPrefs.SetString ("Advblood", "true");
 		else
 			PlayerPrefs.SetString ("Advblood", "false");
+	}
+
+	public  void Level_selection_backPress(){
+		Level_Selection_Pannel.SetActive (false);
+	}
+	public  void Level_selection_level_01(){
+		Level_Selection_Pannel.SetActive (false);
+		SceneManager.LoadScene (1);
+		Debug.Log ("print....");
+	}
+	public  void Level_selection_level_02(){
+		Debug.Log ("print....");
+	}
+	public  void Level_selection_level_03(){
+		Debug.Log ("print....");
+	}
+	public  void Level_selection_level_04(){
+		Debug.Log ("print....");
+	}
+	public  void Level_selection_level_05(){
+		Debug.Log ("print....");
+	}
+	public  void Level_selection_level_06(){
+		Debug.Log ("print....");
 	}
 }

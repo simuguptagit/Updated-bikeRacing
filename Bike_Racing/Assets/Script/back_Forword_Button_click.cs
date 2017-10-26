@@ -110,7 +110,7 @@ public class back_Forword_Button_click : MonoBehaviour {
 	weghtpoint,
 	grippoint;
 	public  void Model_information( int model__no){
-		Debug.Log ("What calling..." + model__no);
+		//Debug.Log ("What calling..." + model__no);
 		if (model__no == 1) {
 			p = localization.power1Text;
 			w = localization.weight1Text;

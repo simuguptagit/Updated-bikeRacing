@@ -73,15 +73,15 @@ public class localization : MonoBehaviour {
 
 			power1Text = "834 bhp";
 			weight1Text = "3321 ips";
-			grip1Text ="16504";
+			grip1Text = "16504";
 
 			power2Text = "850 bhp";
 			weight2Text = "3655 ips";
-			grip2Text ="18904";
+			grip2Text = "18904";
 
 			power3Text = "900 bhp";
 			weight3Text = "4000 ips";
-			grip3Text ="20000";
+			grip3Text = "20000";
 
 			Bike_1_info = "Rear wheel drive 6 -speed gearbox";
 			Bike_2_info = "Rear wheel drive 7 -speed gearbox";
@@ -124,7 +124,7 @@ public class localization : MonoBehaviour {
 			Spain = "SPAIN";
 			Usa = "USA";
 
-		} else if(str == "CA") {
+		} else if (str == "CA") {
 			
 			power = "Leistung";
 			weight = "Gewicht";
@@ -132,15 +132,15 @@ public class localization : MonoBehaviour {
 
 			power1Text = "834 ch";
 			weight1Text = "3321 ips";
-			grip1Text ="16504";
+			grip1Text = "16504";
 
 			power2Text = "850 ch";
 			weight2Text = "3655 ips";
-			grip2Text ="18904";
+			grip2Text = "18904";
 
 			power3Text = "900 ch";
 			weight3Text = "4000 ips";
-			grip3Text ="20000";
+			grip3Text = "20000";
 
 			Bike_1_info = "Traction arrière boîte de vitesses à 6 vitesses";
 			Bike_2_info = "Traction arrière boîte de vitesses à 7 vitesses";
@@ -182,8 +182,65 @@ public class localization : MonoBehaviour {
 			Portgal = "PORTUGAL";
 			Spain = "ESPAGNE";
 			Usa = "Etats-Unis";
+		} else {
+			power = "Power ";
+			weight = "Weight";
+			grip = "Grip";
+
+			power1Text = "834 bhp";
+			weight1Text = "3321 ips";
+			grip1Text = "16504";
+
+			power2Text = "850 bhp";
+			weight2Text = "3655 ips";
+			grip2Text = "18904";
+
+			power3Text = "900 bhp";
+			weight3Text = "4000 ips";
+			grip3Text = "20000";
+
+			Bike_1_info = "Rear wheel drive 6 -speed gearbox";
+			Bike_2_info = "Rear wheel drive 7 -speed gearbox";
+			Bike_3_info = "Rear wheel drive 8 -speed gearbox";
+
+			Bikelistbutton = "BikeList";
+			Settingbutton = "Setting";
+			Racebutton = "Race";
+
+			SettingFont = "Setting";
+			Music = "Music";
+			Sound = "Sound";
+			Graphics = "Graphics";
+			Control = "Control";
+			Advanced = "Advanced";
+			Lang = "Language";
+
+			ControlText = "Control";
+			Steering = "Steering";
+			Throttle = "Throttle";
+			Gear = "Gear";
+			InvertControl = "Invert Controls";
+			DetachBreak = "Detach Breaks";
+			Sensivity = "Sensivity";
+			preview = "Preview";
+			calibrate = "Calibrate";
+			restOfDefault = "Rest Of Defaults";
+
+			AdvancedText = "Advanced";
+			Speed = "Speed unit";
+			wheather = "Weather Effects";
+			driveleft = "Drive On Left";
+			blood = "Blood Effect";
+
+			India = "INDIA";
+			England = "ENGLAND";
+			Canada = "CANADA";
+			Brazil = "BRAZIL";
+			Portgal = "PORTUGAL";
+			Spain = "SPAIN";
+			Usa = "USA";
 		}
 		back_Forword_Button_click.localizationFontchange = true;
-		//Debug.Log ("local...."+str+"   "+power);
+		Debug.Log ("local...." + str + "   " + power);
 	}
 }
