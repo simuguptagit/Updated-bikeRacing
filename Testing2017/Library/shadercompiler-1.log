@@ -1,0 +1,152 @@
+Base path: C:/Program Files (x86)/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-1-2728
+Cmd: getPlatforms
+Cmd: preprocess
+  insize=219 outsize=219 ok=1
+Cmd: preprocess
+  insize=2400 outsize=933 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (69): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1769 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2942 outsize=1170 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (66): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=2075 outsize=0 kw=LIGHTMAP_ON ok=0
+Cmd: preprocess
+  insize=1654 outsize=576 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (59): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1380 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2413 outsize=564 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (72): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=2153 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2047 outsize=563 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (69): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1787 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=480 outsize=480 ok=1
+Cmd: preprocess
+  insize=2893 outsize=979 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (72): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=2218 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2526 outsize=978 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (69): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1851 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=1535 outsize=914 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (55): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=923 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2767 outsize=935 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (72): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=2136 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2003 outsize=977 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (59): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1328 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=1511 outsize=562 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (59): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1251 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=3042 outsize=1804 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=5491 outsize=3980 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=5491 outsize=2737 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3334 outsize=3630 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3334 outsize=3053 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=5370 outsize=3094 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=5370 outsize=2290 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3313 outsize=3053 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3313 outsize=2631 kw=POINT ok=1
+Cmd: preprocess
+  insize=1867 outsize=933 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (59): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1236 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2557 outsize=578 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (72): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=2283 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=435 outsize=435 ok=1
+Cmd: preprocess
+  insize=1519 outsize=924 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (55): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=897 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=6061 outsize=3516 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (71): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=7114 outsize=0 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=0
+Cmd: preprocess
+  insize=1547 outsize=967 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (57): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=881 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2361 outsize=2258 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=5593 outsize=3980 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=5593 outsize=2964 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3436 outsize=3630 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3436 outsize=3281 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4351 outsize=2607 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4351 outsize=1412 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=2326 outsize=2875 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=2326 outsize=1705 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1854 outsize=1477 kw= ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1854 outsize=632 kw= ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4067 outsize=2883 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4067 outsize=1355 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: preprocess
+  insize=1315 outsize=567 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (57): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1050 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2190 outsize=577 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (69): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1916 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=1751 outsize=1013 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (59): undeclared identifier 'UnityObjectToClipPos'
+  api=4 type=0 insize=1040 outsize=0 kw= ok=0
+Unhandled exception: Readfile from pipe failed. GLE=The pipe has been ended.
+
+
+Quitting shader compiler process
