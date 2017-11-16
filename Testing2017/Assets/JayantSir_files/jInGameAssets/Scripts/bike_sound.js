@@ -5,8 +5,7 @@ var linkToBike : BikeMainLogic;
 var lastGear : int;
 private var highRPMAudio : AudioSource;
 private var skidSound : AudioSource;
-
-
+var Bgsound : AudioSource;
 var engineStartSound : AudioClip;
 var gearingSound : AudioClip;
 var IdleRPM : AudioClip;
@@ -22,6 +21,11 @@ private var outsideControls : GameController;
 
 
 function Start () {
+
+    Bgsound.Stop();
+    Bgsound.volume =PlayerPrefs.GetFloat ("game");
+    Bgsound.Play();
+    Debug.Log ("mussiiccc calling..."+PlayerPrefs.GetFloat ("game")+"   "+PlayerPrefs.GetFloat ("bike"));
 	ctrlHub = GameObject.Find("gameScenario");
 	outsideControls = ctrlHub.GetComponent(GameController);
 	
@@ -38,8 +42,7 @@ function Start () {
     skidSound.playOnAwake = false;
     skidSound.clip = skid;
     skidSound.pitch = 0.5;//1.0
-    skidSound.volume = 0.5;//1.0
-    
+    skidSound.volume = PlayerPrefs.GetFloat ("bike");// 0.5;//1.0
 	
  	linkToBike = this.GetComponent(BikeMainLogic);
 	GetComponent.<AudioSource>().PlayOneShot(engineStartSound);
@@ -53,9 +56,9 @@ function Update(){
    if(!(GameController.GameCompleted|| GameController.GameFailed))
    {
 	GetComponent.<AudioSource>().pitch = Mathf.Abs(linkToBike.EngineRPM  / linkToBike.MaxEngineRPM) + 0.5f;//1
-	GetComponent.<AudioSource>().volume = 1.0 - (Mathf.Abs(linkToBike.EngineRPM  / linkToBike.MaxEngineRPM));
+	GetComponent.<AudioSource>().volume =  PlayerPrefs.GetFloat ("bike")- (Mathf.Abs(linkToBike.EngineRPM  / linkToBike.MaxEngineRPM));
 	highRPMAudio.pitch = Mathf.Abs(linkToBike.EngineRPM  / linkToBike.MaxEngineRPM);
-	highRPMAudio.volume = Mathf.Abs(linkToBike.EngineRPM  / linkToBike.MaxEngineRPM);
+	highRPMAudio.volume = PlayerPrefs.GetFloat ("bike");//Mathf.Abs(linkToBike.EngineRPM  / linkToBike.MaxEngineRPM);
 
 	if (outsideControls.restartBike){
 		GetComponent.<AudioSource>().Stop();
@@ -70,14 +73,14 @@ function Update(){
 		lastGear = linkToBike.CurrentGear;
 	}
 
-	if (linkToBike.coll_rearWheel.sidewaysFriction.stiffness < 0.5 && !isSkidingRear && linkToBike.bikeSpeed >1){
+	if (linkToBike.coll_rearWheel.sidewaysFriction.stiffness < 0.5 && PlayerPrefs.GetFloat ("bike")>0&&!isSkidingRear && linkToBike.bikeSpeed >1){
 			skidSound.Play();
 			isSkidingRear = true;
 	} else if (linkToBike.coll_rearWheel.sidewaysFriction.stiffness >= 0.5 && isSkidingRear || linkToBike.bikeSpeed <=1){
-				skidSound.Stop();
+					skidSound.Stop();
 				isSkidingRear = false;
 	}
-	if (linkToBike.coll_frontWheel.brakeTorque >= (linkToBike.frontBrakePower-10) && !isSkidingFront && linkToBike.bikeSpeed >1){
+	if (linkToBike.coll_frontWheel.brakeTorque >= (linkToBike.frontBrakePower-10) && PlayerPrefs.GetFloat ("bike")>0&&!isSkidingFront && linkToBike.bikeSpeed >1){
 			skidSound.Play();
 			isSkidingFront = true;
 	} else if (linkToBike.coll_frontWheel.brakeTorque < linkToBike.frontBrakePower && isSkidingFront || linkToBike.bikeSpeed <=1){
@@ -101,9 +104,10 @@ function Update(){
 	}
 }
 
-function playEngineWorkSound(){
+function playEngineWorkSound(){ 
 	yield WaitForSeconds(1);
 	GetComponent.<AudioSource>().clip = IdleRPM;
+	GetComponent.<AudioSource>().volume = PlayerPrefs.GetFloat ("bike");
 	GetComponent.<AudioSource>().Play();
 	highRPMAudio.Play();
 }

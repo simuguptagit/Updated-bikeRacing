@@ -27,31 +27,32 @@ public class localization : MonoBehaviour {
 	public static string Bikelistbutton;
 	public static string Settingbutton;
 	public static string Racebutton;
+	public static string Morebutton;
 
 	public static string SettingFont;
-	public static string Music;
-	public static string Sound;
-	public static string Graphics;
-	public static string Control;
-	public static string Advanced;
+	public static string game_sound;
+	public static string bike_sound;
+	//public static string Graphics;
+	//public static string Control;
+	//public static string Advanced;
 	public static string Lang;
 
-	public static string ControlText;
+	//public static string ControlText;
 	public static string Steering;
-	public static string Throttle;
-	public static string Gear;
+	//public static string Throttle;
+	//public static string Gear;
 	public static string InvertControl;
-	public static string DetachBreak;
+	//public static string DetachBreak;
 	public static string Sensivity;
 	public static string preview;
-	public static string calibrate;
+	//public static string calibrate;
 	public static string restOfDefault;
 
-	public static string AdvancedText;
+	//public static string AdvancedText;
 	public static string Speed;
-	public static string wheather;
-	public static string driveleft;
-	public static string blood;
+	//public static string wheather;
+	//public static string driveleft;
+	//public static string blood;
 
 	public static string India;
 	public static string England;
@@ -90,31 +91,32 @@ public class localization : MonoBehaviour {
 			Bikelistbutton = "BikeList";
 			Settingbutton = "Setting";
 			Racebutton = "Race";
+			Morebutton = "More Games";
 
 			SettingFont = "Setting";
-			Music = "Music";
-			Sound = "Sound";
-			Graphics = "Graphics";
-			Control = "Control";
-			Advanced = "Advanced";
+			bike_sound = "Bike sound";
+			game_sound = "Game sound";
+			//Graphics = "Graphics";
+			//Control = "Control";
+			//Advanced = "Advanced";
 			Lang = "Language";
 
-			ControlText = "Control";
+			//ControlText = "Control";
 			Steering = "Steering";
-			Throttle = "Throttle";
-			Gear = "Gear";
+			//Throttle = "Throttle";
+			//Gear = "Gear";
 			InvertControl = "Invert Controls";
-			DetachBreak = "Detach Breaks";
+			//DetachBreak = "Detach Breaks";
 			Sensivity = "Sensivity";
 			preview = "Preview";
-			calibrate = "Calibrate";
+			//calibrate = "Calibrate";
 			restOfDefault = "Rest Of Defaults";
 
-			AdvancedText = "Advanced";
+			//AdvancedText = "Advanced";
 			Speed = "Speed unit";
-			wheather = "Weather Effects";
-			driveleft = "Drive On Left";
-			blood = "Blood Effect";
+			//wheather = "Weather Effects";
+			//driveleft = "Drive On Left";
+			//blood = "Blood Effect";
 
 			India = "INDIA";
 			England = "ENGLAND";
@@ -149,31 +151,31 @@ public class localization : MonoBehaviour {
 			Bikelistbutton = "BikeList";
 			Settingbutton = "Réglage";
 			Racebutton = "Course";
-
+			Morebutton = "More Games";
 			SettingFont = "Réglage";
-			Music = "La musique";
-			Sound = "Du son";
-			Graphics = "Graphique";
-			Control = "Contrôle";
-			Advanced = "Avancée";
+			bike_sound = "Bike sound";
+			game_sound = "Game sound";
+			//Graphics = "Graphique";
+		//	Control = "Contrôle";
+		//	Advanced = "Avancée";
 			Lang = "La langue";
 
-			ControlText = "Contrôle";
+			//ControlText = "Contrôle";
 			Steering = "Pilotage";
-			Throttle = "Étrangler";
-			Gear = "Équipement";
+			//Throttle = "Étrangler";
+			//Gear = "Équipement";
 			InvertControl = "Inverser les contrôles";
-			DetachBreak = "Détachez les pauses";
+			//DetachBreak = "Détachez les pauses";
 			Sensivity = "Sensibilité";
 			preview = "Aperçu";
-			calibrate = "Étalonner";
+			//calibrate = "Étalonner";
 			restOfDefault = "Reste des paramètres par défaut";
 
-			AdvancedText = "Avancée";
+			//AdvancedText = "Avancée";
 			Speed = "Unité de vitesse";
-			wheather = "Météo Effets";
-			driveleft = "Conduire Sur La gauche";
-			blood = "Du sang La gauche";
+			//wheather = "Météo Effets";
+			//driveleft = "Conduire Sur La gauche";
+		//	blood = "Du sang La gauche";
 
 			India = "INDE";
 			England = "ANGLETERRE";
@@ -206,31 +208,31 @@ public class localization : MonoBehaviour {
 			Bikelistbutton = "BikeList";
 			Settingbutton = "Setting";
 			Racebutton = "Race";
-
+			Morebutton = "More Games";
 			SettingFont = "Setting";
-			Music = "Music";
-			Sound = "Sound";
-			Graphics = "Graphics";
-			Control = "Control";
-			Advanced = "Advanced";
+			bike_sound = "Bike sound";
+			game_sound = "Game sound";
+			//Graphics = "Graphics";
+			//Control = "Control";
+			//Advanced = "Advanced";
 			Lang = "Language";
 
-			ControlText = "Control";
+			//ControlText = "Control";
 			Steering = "Steering";
-			Throttle = "Throttle";
-			Gear = "Gear";
+			//Throttle = "Throttle";
+			//Gear = "Gear";
 			InvertControl = "Invert Controls";
-			DetachBreak = "Detach Breaks";
+			//DetachBreak = "Detach Breaks";
 			Sensivity = "Sensivity";
 			preview = "Preview";
-			calibrate = "Calibrate";
+		//	calibrate = "Calibrate";
 			restOfDefault = "Rest Of Defaults";
 
-			AdvancedText = "Advanced";
+			//AdvancedText = "Advanced";
 			Speed = "Speed unit";
-			wheather = "Weather Effects";
-			driveleft = "Drive On Left";
-			blood = "Blood Effect";
+			//wheather = "Weather Effects";
+			//driveleft = "Drive On Left";
+			//blood = "Blood Effect";
 
 			India = "INDIA";
 			England = "ENGLAND";
@@ -241,6 +243,6 @@ public class localization : MonoBehaviour {
 			Usa = "USA";
 		}
 		back_Forword_Button_click.localizationFontchange = true;
-		Debug.Log ("local...." + str + "   " + power);
+		//Debug.Log ("local...." + str + "   " + power);
 	}
 }

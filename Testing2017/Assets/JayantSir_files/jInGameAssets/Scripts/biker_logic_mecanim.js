@@ -161,11 +161,11 @@ function Update () {
 	}
 
 	//scan do rider see POI
-	if (poi01.gameObject.SetActive && distanceToPoi > Vector3.Distance(this.transform.position, poi01.transform.position)){
-		lookPoint = poi01;
+	//if (poi01.gameObject.SetActive && distanceToPoi > Vector3.Distance(this.transform.position, poi01.transform.position)){
+	//	lookPoint = poi01;
 		//if not - still looking forward for a rigidbody POI right before bike
-	} else lookPoint = camPoint;
-	
+	//} else lookPoint = camPoint;
+	lookPoint = camPoint;
 	// pull leg(s) down when bike stopped
 	if (Mathf.Round((bikeRideOn.GetComponent.<Rigidbody>().velocity.magnitude * 3.6)*10) * 0.1 <= 15 && !bikeStatusCrashed.isReverseOn){//no reverse speed
 	reverseSpeed = 0.0;

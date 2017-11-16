@@ -85,7 +85,7 @@ var speedometerRot:GameObject ;
  var factor:float;
 
 function Start () {
-
+ 
 	ctrlHub = GameObject.Find("gameScenario");
 	bikeparticle=transform.Find("bikeparticle").gameObject;
 	speedText=GameObject.Find("Canvas/speedometer/speedText");
@@ -119,6 +119,13 @@ function Start () {
 	
 	baseDistance = coll_frontWheel.transform.localPosition.z - coll_rearWheel.transform.localPosition.z;
 }
+
+//void OnTriggerEnter(Collider other) {
+//Debug.Log ("Trigeer enter...."+other.gameObject.name);
+     //   if(other.gameObject.name.Equals ("CheckPoint") == true)
+   //     GameController.GameCompleted = true;
+       // Destroy(other.gameObject);
+  //  }
 
 
 function FixedUpdate (){
@@ -474,9 +481,9 @@ function FrontSuspensionRestoration (sprWeakness : int){
 	}
 function OnCollisionEnter (col : Collision)
 	{
-	if(GameController.GameCompleted||GameController.GameFailed)
-	return;
-	if(col.gameObject.name == "Terrain")
+	//if(GameController.GameCompleted||GameController.GameFailed)
+	//return;
+	/*if(col.gameObject.name == "Terrain")
     {
 //    Debug.Log(col.gameObject.name);
     bikeparticle.SetActive(true);
@@ -488,11 +495,8 @@ function OnCollisionEnter (col : Collision)
 		CoM.localPosition.z = 0.0;
 		GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
     Invoke("BikeCrash",5);
-
-     
     }
-	
-
+	*/
 	}
 	function OnTriggerEnter(col:Collider){
 	if(GameController.GameCompleted|| GameController.GameFailed)
@@ -501,10 +505,12 @@ function OnCollisionEnter (col : Collision)
 //			Debug.Log ("StartPoint");
 			col.gameObject.SetActive(false);
 		}
-		if (col.gameObject.tag == "EndPoint") {
+		if (col.gameObject.name == "CheckPoint") {
 			//Debug.Log ("EndPont");
 			 GameController.GameCompleted=true;
-		outsideControls.CallfromInGame();
+		     outsideControls.CallfromInGame();
+		    // var currentLevel = PlayerPrefs.GetInt ("Level_Selection");
+
 		}
 
 		//Debug.Log ("collision not detected");

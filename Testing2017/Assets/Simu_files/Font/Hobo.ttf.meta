@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cff1da79b5f2e634da5a83c0f4c5f34f
+timeCreated: 1510724160
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bobo
+  fontNames:
+  - Bobo
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

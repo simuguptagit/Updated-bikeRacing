@@ -139,7 +139,7 @@ public class back_Forword_Button_click : MonoBehaviour {
 			power = 900;
 			weight = 4000;
 			grip = 20000;
-			model_bike = "Triumph RACING";
+			model_bike = "TRIUMPH RACING";
 		}
 		powertext.text = p.ToString();
 		weighttext.text = w.ToString();

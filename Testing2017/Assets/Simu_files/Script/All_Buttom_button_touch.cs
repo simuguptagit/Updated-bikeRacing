@@ -23,8 +23,8 @@ public class All_Buttom_button_touch : MonoBehaviour {
 	public Image usa;
 
 	public  Text SettingFont;
-	public  Text Music;
-	public  Text Sound;
+	public  Text game_text;
+	public  Text bike_text;
 	public  Text Graphic;
 	public  Text Cntrl;
 	public  Text Advan;
@@ -59,8 +59,8 @@ public class All_Buttom_button_touch : MonoBehaviour {
 	public GameObject control_panel;
 	public GameObject adv_panel;
 
-	public Slider MusicSlider;
-	public Slider Soundslider;
+	public Slider bikeSlider;
+	public Slider gameslider;
 	public Dropdown graphicsdrop;
 	public Dropdown langdrop;
 
@@ -92,9 +92,24 @@ public class All_Buttom_button_touch : MonoBehaviour {
 	public  Text BikeListbutton;
 	public  Text SettingButton;
 	public  Text RaceButton;
+	public  Text MoreButton;
+
+	public Image loadingbar;
+	public float loadingtime;
+
+	public GameObject Loading;
+	public GameObject Dot;
+	public GameObject Dot1;
+	public GameObject Dot2;
+	public GameObject Dot3;
+	public GameObject Dot4;
+	private int dot;
+	private bool loadingbool;
+	AsyncOperation async;
 	//back_Forword_Button_click ModelChange;
 	// Use this for initialization
 	void Start () {
+		loadingbar.fillAmount = 0;
 		BUTTOM_ButtonFont ();
 		//ModelChange = new back_Forword_Button_click ();
 		settinganim =  setting_panel.GetComponent<Animator> ();
@@ -104,10 +119,10 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		Bikelistselected.SetActive (true);
 		raceselected.SetActive(false);
 
-		if (PlayerPrefs.GetFloat ("Music") == 0)
-			PlayerPrefs.SetFloat ("Music", 0);
-		if (PlayerPrefs.GetFloat ("Sound") == 0)
-			PlayerPrefs.SetFloat ("Sound", 0);
+		if (PlayerPrefs.GetFloat ("game") == 0)
+			PlayerPrefs.SetFloat ("game", 0);
+		if (PlayerPrefs.GetFloat ("bike") == 0)
+			PlayerPrefs.SetFloat ("bike", 0);
 		if (PlayerPrefs.GetString ("Graphics") == null)
 			PlayerPrefs.SetString ("Graphics", null);
 		if (PlayerPrefs.GetString ("Lang") == null)
@@ -139,14 +154,40 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		BikeListbutton.text = localization.Bikelistbutton.ToString ();
 		SettingButton.text = localization.Settingbutton.ToString ();
 		RaceButton.text = localization.Racebutton.ToString ();
+		MoreButton.text = localization.Morebutton.ToString ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		//Debug.Log ("check all values..."+PlayerPrefs.GetFloat ("Music")+"  "+PlayerPrefs.GetFloat ("Sound")+"   "+PlayerPrefs.GetString ("Graphics")+"   "+
-		//	PlayerPrefs.GetString ("Lang")+"  "+PlayerPrefs.GetString ("Advspeed")+"   "+PlayerPrefs.GetString ("Advwheather")+"   "+PlayerPrefs.GetString ("AdvDrive")
-		//	+"  "+PlayerPrefs.GetString ("Advblood"));
+		if (loadingbool == true) {
+			if( dot == 0) Dot.SetActive (true);
+			if (dot == 1) {
+				Dot1.SetActive (true);
+			} else if (dot == 2) {
+				Dot2.SetActive (true);
+			} else if (dot == 3) {
+				Dot3.SetActive (true);
+			} else if (dot == 4) {
+				Dot4.SetActive (true);
+			}
+			else if (dot == 5) {
+				Dot.SetActive (false);
+				Dot4.SetActive (false);
+				Dot3.SetActive (false);
+				Dot2.SetActive (false);
+				Dot1.SetActive (false);
+			}
+
+			if (loadingbar.fillAmount <= 1) {
+				loadingbar.fillAmount += 1.0f / loadingtime * Time.deltaTime;
+			} 
+			if(loadingbar.fillAmount >= 1 && async.progress == .9f) {
+				async.allowSceneActivation = true;
+			}
+
+
+		}
 		
 	}
 	public IEnumerator FillSlider(Slider slider, float value)
@@ -161,28 +202,55 @@ public class All_Buttom_button_touch : MonoBehaviour {
 	public void Setting(){
 		
 		Bikelistselected.SetActive (false);
-
+		Cntrl_Steeringtxt.text = localization.Steering.ToString ();
 		SettingFont.text = localization.SettingFont.ToString ();
-		Music.text = localization.Music.ToString ();
-		Sound.text = localization.Sound.ToString ();
-		Graphic.text = localization.Graphics.ToString ();
-		Cntrl.text = localization.Control.ToString ();
-		Advan.text = localization.Advanced.ToString ();
+		game_text.text = localization.game_sound.ToString ();
+		bike_text.text = localization.bike_sound.ToString ();
+		Cntrl_invertcntrl.text = localization.InvertControl.ToString ();
+		Cntrl_sensivity.text = localization.Sensivity.ToString ();
+		Cntrl_preview.text = localization.preview.ToString ();
+		Cntrl_restofdefaults.text = localization.restOfDefault.ToString ();
+		Speed.text = localization.Speed.ToString();
+		//Graphic.text = localization.Graphics.ToString ();
+		//Cntrl.text = localization.Control.ToString ();
+		//Advan.text = localization.Advanced.ToString ();
 		lang.text = localization.Lang.ToString ();
 
 		settinganim.SetBool ("reverse",false);
+		Settingselected.GetComponentInChildren<Text>().text = localization.SettingFont;
 		Settingselected.SetActive (true);
+
+		if (PlayerPrefs.GetString ("cntrl_steering") == "TILT") {
+			Cntrl_steering.value = 0;
+			cntrl_preview1.SetActive (true);
+		} else if (PlayerPrefs.GetString ("cntrl_steering") == "Button") {
+			Cntrl_steering.value = 1;
+			cntrl_preview2.SetActive (true);
+		}
+
+		if (PlayerPrefs.GetString ("Advspeed") == "KMH") 
+			Advdropspeed.value = 0;
+		else 
+			Advdropspeed.value = 1;
+
+		cntrl_Slider_sensivity.value = PlayerPrefs.GetFloat ("sensivity");
+
+		if (PlayerPrefs.GetString ("cntrl_invert") == "true")
+			cntrl_invert.isOn = true;
+		else
+			cntrl_invert.isOn = false;
+
 		//Debug.Log ("Setting caliing..."+PlayerPrefs.GetFloat ("Music"));
 	///	FillSlider (MusicSlider, PlayerPrefs.GetFloat ("Music"));
 	//	FillSlider (Soundslider, PlayerPrefs.GetFloat ("Sound"));
-		MusicSlider.value = PlayerPrefs.GetFloat ("Music");
-		Soundslider.value = PlayerPrefs.GetFloat ("Sound");
-		if (PlayerPrefs.GetString ("Graphics") == "High")
-			graphicsdrop.value = 0;
-		else if (PlayerPrefs.GetString ("Graphics") == "Medium")
-			graphicsdrop.value = 1;
-		else if (PlayerPrefs.GetString ("Graphics") == "Low")
-			graphicsdrop.value = 2;
+		gameslider.value = PlayerPrefs.GetFloat ("game");
+		bikeSlider.value = PlayerPrefs.GetFloat ("bike");
+	//	if (PlayerPrefs.GetString ("Graphics") == "High")
+	//		graphicsdrop.value = 0;
+	//	else if (PlayerPrefs.GetString ("Graphics") == "Medium")
+	//		graphicsdrop.value = 1;
+	//	else if (PlayerPrefs.GetString ("Graphics") == "Low")
+	//		graphicsdrop.value = 2;
 
 		if (PlayerPrefs.GetString ("Lang") == "IN")
 			langImage.sprite = india.sprite;
@@ -200,9 +268,43 @@ public class All_Buttom_button_touch : MonoBehaviour {
 			langImage.sprite = portugal.sprite;
 
 		setting_panel.SetActive (true);
+		Debug.Log ("Setting..."+PlayerPrefs.GetString ("cntrl_steering")+"   "+PlayerPrefs.GetString ("Advspeed")+"   "+PlayerPrefs.GetString ("Lang")
+			+"   "+PlayerPrefs.GetString ("cntrl_invert")+"  "+gameslider.value+"  "+bikeSlider.value+"  "+cntrl_Slider_sensivity.value);
 	}
+	public void Reset(){
+		Cntrl_steering.value = 0;
+		PlayerPrefs.SetString ("cntrl_steering", Cntrl_steering.options[Cntrl_steering.value].text);
+		if (Cntrl_steering.value == 1) {
+			cntrl_preview2.SetActive (true);
+			cntrl_preview1.SetActive (false);
+		} else {
+			cntrl_preview2.SetActive (false);
+			cntrl_preview1.SetActive (true);
+		}
 
-	public void Control(){
+		Advdropspeed.value = 0;
+		PlayerPrefs.SetString ("Advspeed", Advdropspeed.options[Advdropspeed.value].text);
+
+		langImage.sprite = india.sprite;
+		PlayerPrefs.SetString ("Lang","IN");
+		font_Calling ();
+
+		cntrl_invert.isOn = false;
+		if(cntrl_invert.isOn)
+			PlayerPrefs.SetString ("cntrl_invert","true");
+		else
+			PlayerPrefs.SetString ("cntrl_invert","false");
+
+		gameslider.value = 0;
+		PlayerPrefs.SetFloat ("game", gameslider.value);
+
+		bikeSlider.value = 0;
+		PlayerPrefs.SetFloat ("bike", bikeSlider.value);
+
+		cntrl_Slider_sensivity.value = 0;
+		PlayerPrefs.SetFloat ("sensivity", cntrl_Slider_sensivity.value);
+	}
+	/*public void Control(){
 		//setting_panel.SetActive (false);
 
 		Cntrl_ControlText.text = localization.ControlText.ToString ();
@@ -281,14 +383,14 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		Advancedanim.SetBool ("reverse",false);
 		adv_panel.SetActive (true);
 	}
-
+*/
 	public void cross_Setting(){
 		Bikelistselected.SetActive (true);
 		Settingselected.SetActive (false);
 		settinganim.SetBool ("reverse",true);
 		//setting_panel.SetActive (false);
 	}
-	public void cross_control(){
+	/*public void cross_control(){
 		Bikelistselected.SetActive (true);
 		Settingselected.SetActive (false);
 		controlanim.SetBool ("reverse",true);
@@ -299,19 +401,19 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		Settingselected.SetActive (false);
 		Advancedanim.SetBool ("reverse",true);
 		//adv_panel.SetActive (false);
-	}
+	}*/
 	public void cross_Lang(){
 		Lang_Panel.SetActive (false);
 	}
 	public void Race(){
 		Bikelistselected.SetActive (false);
+		raceselected.GetComponentInChildren<Text>().text = localization.Racebutton;
 		raceselected.SetActive(true);
 		Level_Selection_Pannel.SetActive (true);
 	}
 
 	public void select(){
 		Camera_Rotate.Scroll_stop = true;
-
 		Buttom_panel.SetActive (false);
 		Levels.SetActive (true);
 		Forword.SetActive (false);
@@ -319,17 +421,16 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		Select.SetActive (false);
 	}
 
-
-	public void OnControl_music(){
-		PlayerPrefs.SetFloat ("Music", MusicSlider.value);
+	public void OnControl_game(){
+		PlayerPrefs.SetFloat ("game", gameslider.value);
 		//Debug.Log ("Setting..."+PlayerPrefs.GetFloat ("Music")+"   "+MusicSlider.value);
 	}
-	public void OnControl_sound(){
-		PlayerPrefs.SetFloat ("Sound", Soundslider.value);
+	public void OnControl_bike(){
+		PlayerPrefs.SetFloat ("bike", bikeSlider.value);
 	}
-	public void OnControl_graphics(){
-		PlayerPrefs.SetString ("Graphics", graphicsdrop.options[graphicsdrop.value].text);
-	}
+	//public void OnControl_graphics(){
+	//	PlayerPrefs.SetString ("Graphics", graphicsdrop.options[graphicsdrop.value].text);
+	//}
 	public void OnControl_lang(){
 		lang_india.text = localization.India.ToString ();
 		lang_england.text = localization.England.ToString ();
@@ -396,24 +497,24 @@ public class All_Buttom_button_touch : MonoBehaviour {
 			cntrl_preview1.SetActive (true);
 		}
 	}
-	public void Onthrottle(){
-		PlayerPrefs.SetString ("cntrl_throttle", Cntrl_throttle.options[Cntrl_throttle.value].text);
-	}
-	public void OnGear(){
-		PlayerPrefs.SetString ("cntrl_gear", Cntrl_gear.options[Cntrl_gear.value].text);
-	}
+	//public void Onthrottle(){
+	//	PlayerPrefs.SetString ("cntrl_throttle", Cntrl_throttle.options[Cntrl_throttle.value].text);
+	//}
+	//public void OnGear(){
+	//	PlayerPrefs.SetString ("cntrl_gear", Cntrl_gear.options[Cntrl_gear.value].text);
+	//}
 	public void Oninvert(){
 		if(cntrl_invert.isOn)
 			PlayerPrefs.SetString ("cntrl_invert","true");
 		else
 			PlayerPrefs.SetString ("cntrl_invert","false");
 	}
-	public void Ondetach(){
-		if(cntrl_detach.isOn)
-			PlayerPrefs.SetString ("cntrl_detach", "true");
-		else
-			PlayerPrefs.SetString ("cntrl_detach", "false");	
-	}
+//	public void Ondetach(){
+	//	if(cntrl_detach.isOn)
+	//		PlayerPrefs.SetString ("cntrl_detach", "true");
+	//	else
+	///		PlayerPrefs.SetString ("cntrl_detach", "false");	
+	//}
 	public void OnSensivity(){
 		PlayerPrefs.SetFloat ("sensivity", cntrl_Slider_sensivity.value);
 	}
@@ -422,7 +523,7 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		PlayerPrefs.SetString ("Advspeed", Advdropspeed.options[Advdropspeed.value].text);
 	}
 
-	public void OnAdv_Wheather(){
+	/*public void OnAdv_Wheather(){
 		if(AdvWheather.isOn)
 		PlayerPrefs.SetString ("Advwheather","true");
 		else
@@ -442,29 +543,95 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		else
 			PlayerPrefs.SetString ("Advblood", "false");
 	}
-
+*/
 	public  void Level_selection_backPress(){
+		raceselected.SetActive(false);
+		Bikelistselected.SetActive (true);
 		Level_Selection_Pannel.SetActive (false);
 	}
 	public  void Level_selection_level_01(){
 		Level_Selection_Pannel.SetActive (false);
-		SceneManager.LoadScene (1);
+		//SceneManager.LoadScene (1);
 		GameController.LevelNo = 1;
-		Debug.Log ("print....");
+		GameController.Bike_x = 15.93f;
+		GameController.Bike_y = 1.17f;
+		GameController.Bike_z = 179.392f;
+		GameController.Bike_Rotation_y = 168.0995f;
+		StartCoroutine (PlayChange());
+		Debug.Log ("printlevel222....");
 	}
 	public  void Level_selection_level_02(){
-		Debug.Log ("print....");
+	//	SceneManager.LoadScene (1);
+		GameController.LevelNo = 2;
+		GameController.Bike_x = 219.536f;
+		GameController.Bike_y = 1.17f;
+		GameController.Bike_z = 109.291f;
+		GameController.Bike_Rotation_y = -20f;
+		StartCoroutine (PlayChange());
+		Debug.Log ("printlevel222222....");
 	}
 	public  void Level_selection_level_03(){
-		Debug.Log ("print....");
+		//SceneManager.LoadScene (1);
+		GameController.LevelNo = 3;
+		GameController.Bike_x = 189.585f;
+		GameController.Bike_y = 1.17f;
+		GameController.Bike_z = 95.8024f;
+		GameController.Bike_Rotation_y = -18.324f;
+		StartCoroutine (PlayChange());
+		Debug.Log ("printlevel333333....");
 	}
 	public  void Level_selection_level_04(){
-		Debug.Log ("print....");
+		//SceneManager.LoadScene (1);
+		GameController.LevelNo = 4;
+		GameController.Bike_x = 81.93f;
+		GameController.Bike_y = 1.17f;
+		GameController.Bike_z = 69.5f;
+		GameController.Bike_Rotation_y = 0f;
+		StartCoroutine (PlayChange());
+		Debug.Log ("printlevel44444....");
 	}
 	public  void Level_selection_level_05(){
-		Debug.Log ("print....");
+		//SceneManager.LoadScene (1);
+		GameController.LevelNo = 5;
+		GameController.Bike_x = 114.033f;
+		GameController.Bike_y = 1.17f;
+		GameController.Bike_z = 105.391f;
+		GameController.Bike_Rotation_y = -16.0945f;
+		StartCoroutine (PlayChange());
+		Debug.Log ("printlevel55555....");
 	}
 	public  void Level_selection_level_06(){
-		Debug.Log ("print....");
+		//SceneManager.LoadScene (1);
+		GameController.LevelNo = 6;
+		GameController.Bike_x = 33.01f;
+		GameController.Bike_y = 1.17f;
+		GameController.Bike_z = 62.39f;
+		GameController.Bike_Rotation_y = 0f;
+		StartCoroutine (PlayChange());
+		Debug.Log ("printlevel66666....");
+	}
+
+	IEnumerator PlayChange(){
+		loadingbool = true;
+		Dot.SetActive (true);
+		StartCoroutine (DotnoChange());
+		Loading.SetActive (true);
+		async = SceneManager.LoadSceneAsync(1);
+		async.allowSceneActivation = false;
+
+		while (async.isDone == false) {
+			yield return null;
+		}
+	}
+
+	IEnumerator DotnoChange(){
+		yield return new WaitForSeconds(.2f);
+		if (dot == 0) dot = 1;
+		else if (dot == 1) dot = 2;
+		else if (dot == 2) dot = 3;
+		else if (dot == 3) dot = 4;
+		else if (dot == 4) dot = 5;
+		else if (dot == 5) dot = 0;
+		StartCoroutine (DotnoChange());
 	}
 }

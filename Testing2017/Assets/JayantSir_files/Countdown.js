@@ -33,23 +33,22 @@ Switch=1;
 	{
 	yield WaitForSeconds(initialDelay);
 	three.FadeIn();
-	yield WaitForSeconds(2);
+	yield WaitForSeconds(1f);
 	three.FadeOut();
 	two.FadeIn();
-	yield WaitForSeconds(2);
+	yield WaitForSeconds(1f);
 	two.FadeOut();
 	one.FadeIn();
-	yield WaitForSeconds(2);
+	yield WaitForSeconds(1f);
 	one.FadeOut();
 	go.FadeIn();
-	yield WaitForSeconds(2);
+	yield WaitForSeconds(1f);
 	go.FadeOut();
-	yield WaitForSeconds(1);
+	yield WaitForSeconds(.5f);
 	StartRace();
 	}
-function Update () {
 
-                    
+function Update () {
 	if (isFadingIn == true) {
 		alpha = alpha + fadeInSpeed;
 		if (alpha > 1) {
@@ -69,11 +68,9 @@ function Update () {
 	}
 if(!(notStart))
 {
-
-    // blackprompt.color=Color (1, 1, 1, 1);
-	//cam.transform.position = cameraSwitchView [0].position;//extra
-//	cam.transform.rotation = Quaternion.Lerp (transform.rotation, cameraSwitchView [0].rotation, Time.deltaTime * 5.0f);//extra
-  
+      // blackprompt.color=Color (1, 1, 1, 1);
+	 //  cam.transform.position = cameraSwitchView [0].position;//extra
+    //	cam.transform.rotation = Quaternion.Lerp (transform.rotation, cameraSwitchView [0].rotation, Time.deltaTime * 5.0f);//extra
 notStart=true;
 StartCount();
 }

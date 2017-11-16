@@ -3,7 +3,7 @@
 var isVisibleAtStart = false;
 var fadeInAtStart = false;
 var fadeInDelay = 0.0;
-var fadeInSpeed = 0.1;
+var fadeInSpeed = 0.2;
 private var textureRect : Rect;
 var texture : Texture2D;
 var depth = 0;
@@ -78,21 +78,15 @@ function OnGUI() {
 	if (isVisible == true) {
 		//GUI.DrawTexture(textureRect, texture, ScaleMode.StretchToFill, true, 10.0f);
 		GUI.DrawTexture(textureRect,texture);
-
 	}
-	
 }
 
 public function FadeIn () {
-
 	alpha = 0;
 	isFadingIn = true;
-	
 }
 
 public function FadeOut () {
-
 	alpha = 1;
 	isFadingOut = true;
-	
 }

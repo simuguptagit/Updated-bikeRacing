@@ -23,7 +23,7 @@ public class keyboardControls : MonoBehaviour {
 		outsideControls = ctrlHub.GetComponent<GameController>();
 		horizontalAccess=PlayerPrefs.GetString ("cntrl_steering");
 		senstivity=PlayerPrefs.GetFloat ("sensivity");
-		Debug.Log ("sensivity..." + senstivity);
+		//Debug.Log ("sensivity..." + senstivity);
 		if (horizontalAccess == "Button") {
 			steeringValue = 1;
 
