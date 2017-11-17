@@ -23,18 +23,36 @@ public class keyboardControls : MonoBehaviour {
 		outsideControls = ctrlHub.GetComponent<GameController>();
 		horizontalAccess=PlayerPrefs.GetString ("cntrl_steering");
 		senstivity=PlayerPrefs.GetFloat ("sensivity");
-		//Debug.Log ("sensivity..." + senstivity);
+		Debug.Log ("keyboard..."+(PlayerPrefs.GetString ("cntrl_invert").Equals("true"))+"  "+PlayerPrefs.GetString ("cntrl_invert") );
 		if (horizontalAccess == "Button") {
+			
+			if (PlayerPrefs.GetString ("cntrl_invert").Equals("true")) 
+				InvertChange (GameObject.Find("Canvas/Button_brake"),GameObject.Find("Canvas/Button_acceleration"));
+
 			steeringValue = 1;
+			GameObject.Find("Canvas/brake").SetActive(false);
+			GameObject.Find("Canvas/acceleration").SetActive(false);
 
 		} else {
+			if (PlayerPrefs.GetString ("cntrl_invert").Equals("true")) 
+				InvertChange (GameObject.Find ("Canvas/brake"),GameObject.Find ("Canvas/acceleration"));
+
 			GameObject.Find("Canvas/left").SetActive(false);
 			GameObject.Find("Canvas/right").SetActive(false);
+			GameObject.Find("Canvas/Button_brake").SetActive(false);
+			GameObject.Find("Canvas/Button_acceleration").SetActive(false);
 		
 			steeringValue = 0;
 		}
+		//Debug.Log ("steeringensivity..." + steeringValue+"  "+PlayerPrefs.GetString ("cntrl_steering"));
 		accelerator = GameObject.Find ("Canvas/highAccelerator");
 		image = accelerator.GetComponent<UnityEngine.UI.Image>();
+	}
+	public void InvertChange(GameObject Breakobj , GameObject Accelerationobj){
+		Vector3 v = Breakobj.transform.position;
+		Vector3 v1 = Accelerationobj.transform.position;
+		Breakobj.transform.position = v1;
+		Accelerationobj.transform.position = v;
 	}
 	public void leftArrowPointerDown()
 	{
@@ -97,7 +115,7 @@ public class keyboardControls : MonoBehaviour {
 				outsideControls.rearBrakeOn = true;
 			else
 				outsideControls.rearBrakeOn = false;
-			if (steeringValue == 1) {
+			if (steeringValue == 1) {//Debug.Log("steering.."+steeringValue+"  "+leftArrow+"  "+rightArrow+"  "+senstivity);
 				if (leftArrow)
 					outsideControls.Horizontal = Mathf.Lerp (outsideControls.Horizontal, -1, 20 *senstivity* Time.deltaTime)/ 1.112f;
 				else if(rightArrow)

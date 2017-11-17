@@ -17,23 +17,22 @@ public class GameController : MonoBehaviour  {
 
 	public bool reverse;//for reverse speed
 	public static bool GameCompleted,GameFailed;
-	private GameObject LevelComplete, Levelfailed,NextButton;
+	private GameObject LevelComplete, Levelfailed,NextButton,failNextButton;
 	public GameObject Bike1,Bike2,Bike3;
-	//public GameObject Level_01,Level_02,Level_03;
 	public static float Bike_x;
 	public static float Bike_y;
 	public static float Bike_z;
 	public static float Bike_Rotation_y;
 	public static int BikeNo;
 	public static int LevelNo;
-	public static float score;
+	public static int score;
 	public float levelTime,currentTime;
 	private GameObject fuelEmpty;
 	float fractionValue;
 	UnityEngine.UI.Image image;
 
 	void Start()
-	{
+	{//Debug.Log ("gamecontroller..."+PlayerPrefs.GetInt ("ModelNo")+"   "+BikeNo+"  "+LevelNo);
 		BikeNo = PlayerPrefs.GetInt ("ModelNo");
 		Vector3 v = new Vector3 (Bike_x,Bike_y,Bike_z);
 		score = 0;
@@ -42,13 +41,11 @@ public class GameController : MonoBehaviour  {
 			levelTime = 80;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_01"));
-			//GameObject.Find ("LEVELS/level_02").SetActive (false);
 			break;
 		case 2:
 			levelTime = 90;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_02"));
-			//GameObject.Find ("LEVELS/level_01").SetActive (false);;
 			break;
 		case 3:
 			levelTime = 100;
@@ -73,18 +70,22 @@ public class GameController : MonoBehaviour  {
 		case 7:
 			levelTime = 110;
 			currentTime = levelTime;
+			Instantiate (Resources.Load("level_06"));
 			break;
 		case 8:
 			levelTime = 110;
 			currentTime = levelTime;
+			Instantiate (Resources.Load("level_06"));
 			break;
 		case 9:
 			levelTime = 120;
 			currentTime = levelTime;
+			Instantiate (Resources.Load("level_06"));
 			break;
 		case 10:
 			levelTime = 120;
 			currentTime = levelTime;
+			Instantiate (Resources.Load("level_06"));
 			break;
 		case 11:
 			levelTime = 120;
@@ -132,6 +133,7 @@ public class GameController : MonoBehaviour  {
 		LevelComplete = GameObject.Find ("LevelComplete");
 		Levelfailed = GameObject.Find ("Levelfailed");
 		NextButton=GameObject.Find ("LevelComplete/next");
+		failNextButton=GameObject.Find ("Levelfailed/Next");
 		fuelEmpty = GameObject.Find ("Canvas/fuelbase/fuelempty");
 		image = fuelEmpty.GetComponent<UnityEngine.UI.Image>();
 		LevelComplete.SetActive (false);
@@ -166,20 +168,59 @@ public class GameController : MonoBehaviour  {
 
 	public void CallfromInGame()
 	{
-
+		
 		if (GameCompleted) {
 			score = 1000;
 			int i = LevelNo - 1;
-			if (PlayerPrefs.GetFloat ("i") <score)
-		      PlayerPrefs.SetFloat ("i", score);
+			if (i == 0) {
+				if (PlayerPrefs.GetInt("0") <score)
+					PlayerPrefs.SetInt("0", score);
+			}
+			else if (i == 1) {
+				if (PlayerPrefs.GetInt("1") <score)
+					PlayerPrefs.SetInt("1", score);
+			}else if (i == 2) {
+				if (PlayerPrefs.GetInt("2") <score)
+					PlayerPrefs.SetInt("2", score);
+			}else if (i == 3) {
+				if (PlayerPrefs.GetInt("3") <score)
+					PlayerPrefs.SetInt("3", score);
+			}
+			else if (i == 4) {
+				if (PlayerPrefs.GetInt("4") <score)
+					PlayerPrefs.SetInt("4", score);
+			}
+			else if (i == 5) {
+				if (PlayerPrefs.GetInt("5") <score)
+					PlayerPrefs.SetInt("5", score);
+			}
+			else if (i == 6) {
+				if (PlayerPrefs.GetInt("6") <score)
+					PlayerPrefs.SetInt("6", score);
+			}
+			else if (i == 7) {
+				if (PlayerPrefs.GetInt("7") <score)
+					PlayerPrefs.SetInt("7", score);
+			}
+			else if (i == 8) {
+				if (PlayerPrefs.GetInt("8") <score)
+					PlayerPrefs.SetInt("8", score);
+			}
+			else if (i == 9) {
+				if (PlayerPrefs.GetInt("9") <score)
+					PlayerPrefs.SetInt("9", score);
+			}
+
 			LevelComplete.SetActive (true);
 			if(PlayerPrefs.GetInt ("Level_Selection") ==LevelNo)
 				PlayerPrefs.SetInt ("Level_Selection",PlayerPrefs.GetInt ("Level_Selection")+1);
-			//if (LevelNo == 3) {
-			//	NextButton.SetActive (false);
-			//}
+			if (LevelNo == 10) {
+				NextButton.SetActive (false);
+			}
 
 		} else if (GameFailed) {
+			if(PlayerPrefs.GetInt ("Level_Selection")<=LevelNo)
+				failNextButton.SetActive (false);
 			Levelfailed.SetActive (true);
 
 		}

@@ -21,7 +21,7 @@ public class ModelChange_Rotate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		localization.local (PlayerPrefs.GetString ("Lang"));
-		Debug.Log ("locallyy...."+PlayerPrefs.GetString ("Lang")+"   "+localization.power);
+		//Debug.Log ("locallyy...."+PlayerPrefs.GetString ("Lang")+"   "+localization.power);
 
 		loading = false;
 		loadingbarpower.fillAmount = 0;

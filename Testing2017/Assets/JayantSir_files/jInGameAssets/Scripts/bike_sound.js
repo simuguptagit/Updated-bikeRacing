@@ -25,7 +25,6 @@ function Start () {
     Bgsound.Stop();
     Bgsound.volume =PlayerPrefs.GetFloat ("game");
     Bgsound.Play();
-    Debug.Log ("mussiiccc calling..."+PlayerPrefs.GetFloat ("game")+"   "+PlayerPrefs.GetFloat ("bike"));
 	ctrlHub = GameObject.Find("gameScenario");
 	outsideControls = ctrlHub.GetComponent(GameController);
 	

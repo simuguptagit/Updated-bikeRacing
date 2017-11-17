@@ -32,27 +32,15 @@ public class localization : MonoBehaviour {
 	public static string SettingFont;
 	public static string game_sound;
 	public static string bike_sound;
-	//public static string Graphics;
-	//public static string Control;
-	//public static string Advanced;
 	public static string Lang;
 
-	//public static string ControlText;
 	public static string Steering;
-	//public static string Throttle;
-	//public static string Gear;
 	public static string InvertControl;
-	//public static string DetachBreak;
 	public static string Sensivity;
 	public static string preview;
-	//public static string calibrate;
 	public static string restOfDefault;
 
-	//public static string AdvancedText;
 	public static string Speed;
-	//public static string wheather;
-	//public static string driveleft;
-	//public static string blood;
 
 	public static string India;
 	public static string England;
@@ -96,27 +84,15 @@ public class localization : MonoBehaviour {
 			SettingFont = "Setting";
 			bike_sound = "Bike sound";
 			game_sound = "Game sound";
-			//Graphics = "Graphics";
-			//Control = "Control";
-			//Advanced = "Advanced";
 			Lang = "Language";
 
-			//ControlText = "Control";
 			Steering = "Steering";
-			//Throttle = "Throttle";
-			//Gear = "Gear";
 			InvertControl = "Invert Controls";
-			//DetachBreak = "Detach Breaks";
 			Sensivity = "Sensivity";
 			preview = "Preview";
-			//calibrate = "Calibrate";
 			restOfDefault = "Rest Of Defaults";
 
-			//AdvancedText = "Advanced";
 			Speed = "Speed unit";
-			//wheather = "Weather Effects";
-			//driveleft = "Drive On Left";
-			//blood = "Blood Effect";
 
 			India = "INDIA";
 			England = "ENGLAND";
