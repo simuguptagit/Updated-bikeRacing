@@ -50,16 +50,16 @@ public class GameOverPrompt : MonoBehaviour {
 			Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
 			break;
 		case 7:
-			Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+			Level_Play_assign (7,199.1f,1.34f,197.59f,180f);
 			break;
 		case 8:
-			Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+			Level_Play_assign (8,86.6297f,1.48f,24.26351f,82.3026f);
 			break;
 		case 9:
-			Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+			Level_Play_assign (9,122.6117f,1.36f,87.26141f,-13.86395f);
 			break;
 		case 10:
-			Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+			Level_Play_assign (10,73.69089f,1.28f,187.2304f,154.2717f);
 			break;
 		}
 	}

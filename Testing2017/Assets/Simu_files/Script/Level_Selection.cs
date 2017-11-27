@@ -174,7 +174,7 @@ public class Level_Selection : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(forword_back_notification>0){Debug.Log ("levelselecttttt..." +button_status_foe_back+"  "+forword_back_notification);
+		if(forword_back_notification>0){//Debug.Log ("levelselecttttt..." +button_status_foe_back+"  "+forword_back_notification);
 		if (button_status_foe_back == 0)
 			GameObject.Find ("Canvas/level_selection/back").SetActive (false);
 		else if (GameObject.Find ("Canvas/level_selection/back").activeSelf == false && button_status_foe_back > 0)

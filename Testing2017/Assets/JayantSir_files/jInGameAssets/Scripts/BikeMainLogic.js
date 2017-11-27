@@ -8,9 +8,10 @@ var meshRearWheel : GameObject;
 
 private var isFrontWheelInAir : boolean = true;
 private var stiffPowerGain : float = 0.0;
-
+private var Collision_position : Vector3;
 
 private var tmpMassShift : float = 0.0;
+private var counter : int = 0;
 
 public var crashed : boolean = false;
 
@@ -70,16 +71,17 @@ var CurrentGear : int = 0;
 
 private var ctrlHub : GameObject;
 private var outsideControls : GameController;
-
+public var gamepathslider :UI.Image;
 
 private var ESP : boolean = false;
 
 var StartRace:boolean=false;
 var bikeparticle:GameObject;
+
 var speedText:GameObject;
 var textField:UI.Text;
 var speedometerRot:GameObject ;
-
+var pathslider:GameObject ;
  var oldMax:float=100;//100;
  var newMax:float=126;//126
  var factor:float;
@@ -92,6 +94,10 @@ function Start () {
 	textField=speedText.GetComponent(UI.Text);
 	bikeparticle.SetActive(false);
 	outsideControls = ctrlHub.GetComponent(GameController);
+
+    pathslider = GameObject.Find ("Canvas/pathgameobject/pathslider");
+    gamepathslider = pathslider.GetComponent(UI.Image);
+	gamepathslider.fillAmount = 0;
 
 	speedometerRot = GameObject.Find ("Canvas/speedometer/speedometerrot");
 
@@ -119,14 +125,6 @@ function Start () {
 	
 	baseDistance = coll_frontWheel.transform.localPosition.z - coll_rearWheel.transform.localPosition.z;
 }
-
-//void OnTriggerEnter(Collider other) {
-//Debug.Log ("Trigeer enter...."+other.gameObject.name);
-     //   if(other.gameObject.name.Equals ("CheckPoint") == true)
-   //     GameController.GameCompleted = true;
-       // Destroy(other.gameObject);
-  //  }
-
 
 function FixedUpdate (){
 if(!StartRace)
@@ -170,7 +168,7 @@ if(!StartRace)
 
     textField.text=(Mathf.FloorToInt(bikeSpeed)).ToString();
 
-		if (!crashed && outsideControls.Vertical >0 && !isReverseOn){
+		if (!crashed && outsideControls.Vertical >0 && !isReverseOn){//Debug.Log ("BikeMainLogic21212121....");
 			coll_frontWheel.brakeTorque = 0;
 			coll_rearWheel.motorTorque = EngineTorque * outsideControls.Vertical;
 
@@ -180,7 +178,7 @@ if(!StartRace)
 			GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
 		}
 
-		if (!crashed && outsideControls.Vertical >0 && isReverseOn){
+		if (!crashed && outsideControls.Vertical >0 && isReverseOn){Debug.Log ("BikeMainLogic20202020....");
 			coll_rearWheel.motorTorque = EngineTorque * -outsideControls.Vertical/10+(bikeSpeed*50);
 
 		
@@ -190,7 +188,7 @@ if(!StartRace)
 		}
 		
 
-		if (!crashed && outsideControls.Vertical >0.9 && !isReverseOn){
+		if (!crashed && outsideControls.Vertical >0.9 && !isReverseOn){//Debug.Log ("BikeMainLogic19191919....");
 			coll_frontWheel.brakeTorque = 0;
 			coll_rearWheel.motorTorque = EngineTorque * 1.2;
 
@@ -230,15 +228,12 @@ if(!StartRace)
 			}
 		} else RearSuspensionRestoration();
 		
-		
 
-		if (!crashed && outsideControls.Vertical <0 && !isFrontWheelInAir){
+		if (!crashed && outsideControls.Vertical <0 && !isFrontWheelInAir){//Debug.Log ("BikeMainLogic18181818....");
 
 			coll_frontWheel.brakeTorque = frontBrakePower * -outsideControls.Vertical;
 			coll_rearWheel.motorTorque = 0; 
-			
 
-			
 			if (!ESP){
 				if (bikeSpeed >1){
 					
@@ -277,7 +272,7 @@ if(!StartRace)
 			
 		
 
-		if (!crashed && outsideControls.rearBrakeOn){
+		if (!crashed && outsideControls.rearBrakeOn){//Debug.Log ("BikeMainLogic17171717....");
 			coll_rearWheel.brakeTorque = frontBrakePower / 2;
 			
 			if (this.transform.localEulerAngles.x > 180 && this.transform.localEulerAngles.x < 350){
@@ -293,7 +288,7 @@ if(!StartRace)
 			coll_rearWheel.sidewaysFriction.stiffness = 1.0 - stiffPowerGain;
 			meshRearWheel.GetComponent.<Renderer>().material.color = Color.red;
 			
-		} else{
+		} else{//Debug.Log ("BikeMainLogic16161616....");
 
 			coll_rearWheel.brakeTorque = 0;
 
@@ -307,7 +302,7 @@ if(!StartRace)
 		}
 		
 
-		if (!crashed && outsideControls.reverse && bikeSpeed <=0){
+		if (!crashed && outsideControls.reverse && bikeSpeed <=0){//Debug.Log ("BikeMainLogic15151515....");
 				outsideControls.reverse = false;
 				if(isReverseOn == false){
 				isReverseOn = true;
@@ -316,10 +311,10 @@ if(!StartRace)
 			
 		
 
-			tempMaxWheelAngle = wheelbarRestrictCurve.Evaluate(bikeSpeed);
+		tempMaxWheelAngle = wheelbarRestrictCurve.Evaluate(bikeSpeed);
 		
 		if (!crashed && outsideControls.Horizontal !=0){	
-	
+	         //Debug.Log ("BikeMainLogic14141414....");
 			
 			coll_frontWheel.steerAngle = tempMaxWheelAngle * outsideControls.Horizontal;
 
@@ -329,29 +324,28 @@ if(!StartRace)
 		
 
 
-		if (outsideControls.VerticalMassShift >0){
+		if (outsideControls.VerticalMassShift >0){//Debug.Log ("BikeMainLogic13131313....");
 			tmpMassShift = outsideControls.VerticalMassShift/12.5;
 			CoM.localPosition.z = tmpMassShift;	
 			GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
 		}
-		if (outsideControls.VerticalMassShift <0){
+		if (outsideControls.VerticalMassShift <0){//Debug.Log ("BikeMainLogic12121212....");
 			tmpMassShift = outsideControls.VerticalMassShift/12.5;
 			CoM.localPosition.z = tmpMassShift;
 			GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
 		}
-		if (outsideControls.HorizontalMassShift <0){
+		if (outsideControls.HorizontalMassShift <0){//Debug.Log ("BikeMainLogic1010101....");
 			CoM.localPosition.x = outsideControls.HorizontalMassShift/40;
 			GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
 			
 		}
-		if (outsideControls.HorizontalMassShift >0){
+		if (outsideControls.HorizontalMassShift >0){//Debug.Log ("BikeMainLogic9999....");
 			CoM.localPosition.x = outsideControls.HorizontalMassShift/40;
 			GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
 		}
-		
-		
 
 		if (!crashed && outsideControls.Vertical == 0 && !outsideControls.rearBrakeOn || (outsideControls.Vertical < 0 && isFrontWheelInAir)){
+		//Debug.Log ("BikeMainLogic8888....");
 			CoM.localPosition.y = normalCoM;
 			CoM.localPosition.z = 0.0 + tmpMassShift;
 			coll_frontWheel.motorTorque = 0;
@@ -361,17 +355,17 @@ if(!StartRace)
 			GetComponent.<Rigidbody>().centerOfMass = Vector3(CoM.localPosition.x, CoM.localPosition.y, CoM.localPosition.z);
 		}
 
-		if (outsideControls.VerticalMassShift == 0){
+		if (outsideControls.VerticalMassShift == 0){//Debug.Log ("BikeMainLogic7777....");
 			CoM.localPosition.z = 0.0;
 			tmpMassShift = 0.0;
 		}
 	
-		if (outsideControls.HorizontalMassShift == 0){
+		if (outsideControls.HorizontalMassShift == 0){//Debug.Log ("BikeMainLogic66666666....");
 			CoM.localPosition.x = 0.0;
 		}
 		
 
-		if (outsideControls.restartBike){
+		if (outsideControls.restartBike){//Debug.Log ("BikeMainLogic55555....");
 			if (outsideControls.fullRestartBike){
 				transform.position = Vector3(0,1,-11);
 				transform.rotation=Quaternion.Euler( 0.0, 0.0, 0.0 );
@@ -412,7 +406,7 @@ if(!StartRace)
 }
 
 
-function ShiftGears() {
+function ShiftGears() {//Debug.Log ("BikeMainLogic444444....");
 	if ( EngineRPM >= MaxEngineRPM ) {
 		var AppropriateGear : int = CurrentGear;
 		
@@ -439,7 +433,7 @@ function ShiftGears() {
 	}
 }
 	
-function ApplyLocalPositionToVisuals (collider : WheelCollider) {
+function ApplyLocalPositionToVisuals (collider : WheelCollider) {//Debug.Log ("BikeMainLogic3333....");
 		if (collider.transform.childCount == 0) {
 			return;
 		}
@@ -463,13 +457,13 @@ function ApplyLocalPositionToVisuals (collider : WheelCollider) {
 
 }
 
-function RearSuspensionRestoration (){
+function RearSuspensionRestoration (){//Debug.Log ("BikeMainLogic22222....");
 	if (coll_rearWheel.suspensionSpring.spring > normalRearSuspSpring){
 		coll_rearWheel.suspensionSpring.spring = coll_rearWheel.suspensionSpring.spring -= 500;
 	}
 }
 
-function FrontSuspensionRestoration (sprWeakness : int){
+function FrontSuspensionRestoration (sprWeakness : int){//Debug.Log ("BikeMainLogic1111....");
 	if (forgeBlocked) {
 		coll_frontWheel.suspensionSpring.spring = sprWeakness;
 		forgeBlocked = false;
@@ -498,7 +492,7 @@ function OnCollisionEnter (col : Collision)
     }
 	*/
 	}
-	function OnTriggerEnter(col:Collider){
+	function OnTriggerEnter(col:Collider){Debug.Log ("Collision.."+col.gameObject.name);
 	if(GameController.GameCompleted|| GameController.GameFailed)
 	return;
 		if (col.gameObject.tag == "StartPoint") {
@@ -510,16 +504,41 @@ function OnCollisionEnter (col : Collision)
 			 GameController.GameCompleted=true;
 		     outsideControls.CallfromInGame();
 		    // var currentLevel = PlayerPrefs.GetInt ("Level_Selection");
-
+		}if(col.gameObject.name == "Spike Strip"){
+		    GameController.GameFailed=true;
+		     outsideControls.CallfromInGame();
 		}
 
-		//Debug.Log ("collision not detected");
+		if(col.gameObject.name == "collision_point_1")
+		 gamepathslider.fillAmount = .1f;
+		if(col.gameObject.name == "collision_point_2")
+		 gamepathslider.fillAmount = .2f;
+		if(col.gameObject.name == "collision_point_3")
+		 gamepathslider.fillAmount = .3f;
+		if(col.gameObject.name == "collision_point_4")
+		 gamepathslider.fillAmount = .4f;
+		if(col.gameObject.name == "collision_point_5")
+		 gamepathslider.fillAmount = .5f;
+		if(col.gameObject.name == "collision_point_6")
+		 gamepathslider.fillAmount = .6f;
+		if(col.gameObject.name == "collision_point_7")
+		 gamepathslider.fillAmount = .7f;
+		if(col.gameObject.name == "collision_point_8")
+		 gamepathslider.fillAmount = .8f;
+		if(col.gameObject.name == "collision_point_9")
+		 gamepathslider.fillAmount = .9f;
+		if(col.gameObject.name == "collision_point_10")
+		 gamepathslider.fillAmount = 1f;
+		if(col.gameObject.name == "Nitrous stand" || col.gameObject.name == "Bottle Boost")
+		  { GameController.currentTime =GameController.levelTime;
+		   Destroy(col.transform.parent.gameObject);
+		   GameObject.Find ("Canvas/Nitros/fullFuel").GetComponent(Animator).enabled = true;
+		  }
+		//Debug.Log ("collision_point..."+Collision_position);
 	}
 
 	function BikeCrash()
     {
-//   Debug.Log("bikecrash");
-
 		 GameController.GameFailed=true;
 		outsideControls.CallfromInGame();
 	}

@@ -90,9 +90,9 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		raceselected.SetActive(false);
 
 		if (PlayerPrefs.GetFloat ("game") == 0)
-			PlayerPrefs.SetFloat ("game", 0);
+			PlayerPrefs.SetFloat ("game", 1);
 		if (PlayerPrefs.GetFloat ("bike") == 0)
-			PlayerPrefs.SetFloat ("bike", 0);
+			PlayerPrefs.SetFloat ("bike", 1);
 		if (PlayerPrefs.GetString ("Graphics") == null)
 			PlayerPrefs.SetString ("Graphics", null);
 		if (PlayerPrefs.GetString ("Lang") == null)
@@ -109,7 +109,10 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		if (PlayerPrefs.GetString ("cntrl_detach") == null)
 			PlayerPrefs.SetString ("cntrl_detach", null);
 		if (PlayerPrefs.GetFloat ("sensivity") == 0)
-			PlayerPrefs.SetFloat ("sensivity", 0);
+			PlayerPrefs.SetFloat ("sensivity", 1);
+
+		if (PlayerPrefs.GetFloat ("gamesliderpath") == 0)
+			PlayerPrefs.SetFloat ("gamesliderpath", 0);
 
 		if (PlayerPrefs.GetString ("Advspeed") == null)
 			PlayerPrefs.SetString ("Advspeed", null);
@@ -406,19 +409,19 @@ public class All_Buttom_button_touch : MonoBehaviour {
 		//Debug.Log ("printlevel66666....");
 	}
 	public  void Level_selection_level_07(){
-		Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+		Level_Play_assign (7,199.1f,1.34f,197.59f,180f);
 		//Debug.Log ("printlevel66666....");
 	}
 	public  void Level_selection_level_08(){
-		Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+		Level_Play_assign (8,86.6297f,1.48f,24.26351f,82.3026f);
 		//Debug.Log ("printlevel66666....");
 	}
 	public  void Level_selection_level_09(){
-		Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+		Level_Play_assign (9,122.6117f,1.36f,87.26141f,-13.86395f);
 		//Debug.Log ("printlevel66666....");
 	}
 	public  void Level_selection_level_10(){
-		Level_Play_assign (6,33.01f,1.17f,62.39f,0f);
+		Level_Play_assign (10,73.69089f,1.28f,187.2304f,154.2717f);
 		//Debug.Log ("printlevel66666....");
 	}
 

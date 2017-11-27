@@ -26,66 +26,69 @@ public class GameController : MonoBehaviour  {
 	public static int BikeNo;
 	public static int LevelNo;
 	public static int score;
-	public float levelTime,currentTime;
+	public static float levelTime,currentTime;
 	private GameObject fuelEmpty;
+	private GameObject iceParticle;
 	float fractionValue;
 	UnityEngine.UI.Image image;
+	UnityEngine.UI.Image fuelEmptyBottle;
 
 	void Start()
 	{//Debug.Log ("gamecontroller..."+PlayerPrefs.GetInt ("ModelNo")+"   "+BikeNo+"  "+LevelNo);
+		
 		BikeNo = PlayerPrefs.GetInt ("ModelNo");
 		Vector3 v = new Vector3 (Bike_x,Bike_y,Bike_z);
 		score = 0;
 		switch (LevelNo) {
 		case 1:
-			levelTime = 80;
+			levelTime = 40;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_01"));
 			break;
 		case 2:
-			levelTime = 90;
+			levelTime = 60;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_02"));
 			break;
 		case 3:
-			levelTime = 100;
+			levelTime = 50;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_03"));
 			break;
 		case 4:
-			levelTime = 100;
+			levelTime = 60;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_04"));
 			break;
 		case 5:
-			levelTime = 110;
+			levelTime = 65;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_05"));
 			break;
 		case 6:
-			levelTime = 120;
+			levelTime = 65;
 			currentTime = levelTime;
 			Instantiate (Resources.Load("level_06"));
 			break;
 		case 7:
-			levelTime = 110;
+			levelTime = 50;
 			currentTime = levelTime;
-			Instantiate (Resources.Load("level_06"));
+			Instantiate (Resources.Load("level_07"));
 			break;
 		case 8:
-			levelTime = 110;
+			levelTime = 60;
 			currentTime = levelTime;
-			Instantiate (Resources.Load("level_06"));
+			Instantiate (Resources.Load("level_08"));
 			break;
 		case 9:
-			levelTime = 120;
+			levelTime = 48;
 			currentTime = levelTime;
-			Instantiate (Resources.Load("level_06"));
+			Instantiate (Resources.Load("level_09"));
 			break;
 		case 10:
-			levelTime = 120;
+			levelTime = 50;
 			currentTime = levelTime;
-			Instantiate (Resources.Load("level_06"));
+			Instantiate (Resources.Load("level_10"));
 			break;
 		case 11:
 			levelTime = 120;
@@ -136,10 +139,14 @@ public class GameController : MonoBehaviour  {
 		failNextButton=GameObject.Find ("Levelfailed/Next");
 		fuelEmpty = GameObject.Find ("Canvas/fuelbase/fuelempty");
 		image = fuelEmpty.GetComponent<UnityEngine.UI.Image>();
+		fuelEmptyBottle = GameObject.Find ("Canvas/Nitros/emptyFuel2").GetComponent<UnityEngine.UI.Image>();
 		LevelComplete.SetActive (false);
 		Levelfailed.SetActive (false);
 		fractionValue = 1 / levelTime;
-
+		iceParticle = GameObject.Find("Particle_Ice");
+		if (LevelNo <= 3)
+			iceParticle.SetActive (false);
+	    GameObject.Find ("Canvas/Nitros/fullFuel").GetComponent<Animator> ().enabled = false;
 	}
 
 
@@ -147,11 +154,12 @@ public class GameController : MonoBehaviour  {
 	{
 		yield return new WaitForSeconds(1f);
 		currentTime--;
-	
 		image.fillAmount =1- currentTime/levelTime;
-
+		fuelEmptyBottle.fillAmount = 1- currentTime/levelTime;
 		if (currentTime > 0) {
 			StartCoroutine ("timer");
+			if(GameObject.Find ("Canvas/Nitros/fullFuel").GetComponent<Animator> ().isActiveAndEnabled)
+			   GameObject.Find ("Canvas/Nitros/fullFuel").GetComponent<Animator> ().enabled = false;
 		} else {
 			currentTime = 0;
 			GameFailed = true;

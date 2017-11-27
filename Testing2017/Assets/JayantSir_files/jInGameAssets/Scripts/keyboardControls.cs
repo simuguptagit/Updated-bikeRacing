@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class keyboardControls : MonoBehaviour {
-
-
-
+	
 	private GameObject ctrlHub;
 	private GameController outsideControls;
 	private GameObject cam;
@@ -23,7 +21,7 @@ public class keyboardControls : MonoBehaviour {
 		outsideControls = ctrlHub.GetComponent<GameController>();
 		horizontalAccess=PlayerPrefs.GetString ("cntrl_steering");
 		senstivity=PlayerPrefs.GetFloat ("sensivity");
-		Debug.Log ("keyboard..."+(PlayerPrefs.GetString ("cntrl_invert").Equals("true"))+"  "+PlayerPrefs.GetString ("cntrl_invert") );
+	//	Debug.Log ("keyboard..."+(PlayerPrefs.GetString ("cntrl_invert").Equals("true"))+"  "+PlayerPrefs.GetString ("cntrl_invert") );
 		if (horizontalAccess == "Button") {
 			
 			if (PlayerPrefs.GetString ("cntrl_invert").Equals("true")) 
@@ -57,33 +55,23 @@ public class keyboardControls : MonoBehaviour {
 	public void leftArrowPointerDown()
 	{
 		leftArrow = true;
-
-
 	}
 	public void leftArrowPointerUp()
 	{
 		leftArrow =false;
-	
-	
 	}
 
 	public void rightArrowPointerDown()
 	{
 		rightArrow = true;
-
-	
 	}
 	public void rightArrowPointerUp()
 	{
 		rightArrow = false;
-	
-	
 	}
 	public void brakePointerdown()
 	{
 		brake = true;
-
-	
 	}
 	public void brakePointerUp()
 	{
@@ -130,9 +118,9 @@ public class keyboardControls : MonoBehaviour {
 			if (!Input.GetKey (KeyCode.Alpha2)) {
 				//	Debug.Log ("notvertical");
 				if (Input.GetAxis ("Vertical") > 0) {
-					//	outsideControls.Vertical = Mathf.Lerp (outsideControls.Vertical, 1, 1 * Time.deltaTime) / 1.112f;
+					//outsideControls.Vertical = Mathf.Lerp (outsideControls.Vertical, 1, 1 * Time.deltaTime) / 1.112f;
 					outsideControls.Vertical = Input.GetAxis ("Vertical") / 1.112f;//to get less than 0.9 as acceleration to prevent wheelie(wheelie begins at >0.9)
-					//				Debug.Log ("notvertical" + Input.GetAxis ("Vertical"));
+					//Debug.Log ("notvertical" + Input.GetAxis ("Vertical"));
 				}
 				if (Input.GetAxis ("Vertical") < 0) {
 					outsideControls.Vertical = outsideControls.Vertical * 1.112f;
@@ -140,12 +128,6 @@ public class keyboardControls : MonoBehaviour {
 				}
 				//need to get 1(full power) for front brake
 			}
-
-		
-
-
-	
-		
 			///
 		}
 //		Debug.Log (outsideControls.Vertical);
